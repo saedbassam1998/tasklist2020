@@ -7,7 +7,7 @@
 </head>
 <body>
     @foreach($tasks as $task)
-    <h3>{{$task->name}}</h3>
+    <h3><a href="/task/{{task->id}}"{{$task->name}}></a></h3>
     @endforeach
 </body>
 </html>
