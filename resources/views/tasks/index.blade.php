@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 @section('title','Task List')
 @section('content')
 <div class="panel panel-default">
@@ -9,7 +9,8 @@
                 <div class="panel-body">
                     <!-- Display Validation Errors -->
                     <!-- New Task Form -->
-                    <form action="#" method="POST" class="form-horizontal">
+                    <form action="store" method="POST" class="form-horizontal">
+                        @csrf
 
                         <!-- Task Name -->
                         <div class="form-group">
@@ -45,8 +46,9 @@
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
+                            @foreach($tasks as $task)
                                     <tr>
-                                        <td class="table-text"><div>Task 1</div></td>
+                                        <td class="table-text"><div>{{$task ->name}}</div></td>
 
                                         <!-- Task Delete Button -->
                                         <td>
@@ -57,30 +59,7 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="table-text"><div>Task 2</div></td>
-
-                                        <!-- Task Delete Button -->
-                                        <td>
-                                            <form action="#" method="POST">
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-btn fa-trash"></i>Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-text"><div>Task 3</div></td>
-
-                                        <!-- Task Delete Button -->
-                                        <td>
-                                            <form action="#" method="POST">
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-btn fa-trash"></i>Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
