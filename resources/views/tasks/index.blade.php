@@ -52,7 +52,9 @@
 
                                         <!-- Task Delete Button -->
                                         <td>
-                                            <form action="#" method="POST">
+                                        <form action="delete/{{$task->id}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>

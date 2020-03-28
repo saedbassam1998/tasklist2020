@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
+
 class TaskController extends Controller
 {
     public function index()
@@ -30,5 +31,10 @@ class TaskController extends Controller
         ]);
         return redirect()->back();
 
+    }
+    public function destroy($id)
+    {
+        DB::table('tasks')->where('id','=',$id)->delete();
+        return redirect()->back();
     }
 }
