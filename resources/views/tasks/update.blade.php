@@ -5,27 +5,27 @@
 <div class="col-sm-offset-2 col-sm-8">
     <div class="panel panel-default">
         <div class="panel-heading">
-            New Task
+            Update_tas
         </div>
 
         <div class="panel-body">
             <!-- New Task Form -->
-            <form action="{{url('store')}}" method="POST" class="form-horizontal">
+            <form action="{{url('update/'.$task_edit->id)}}" method="POST" class="form-horizontal">        
                 @csrf
                 <!-- Task Name -->
                 <div class="form-group">
                     <label for="task-name" class="col-sm-3 control-label">Task</label>
 
                     <div class="col-sm-6">
-                        <input type="text" name="name" id="task-name" class="form-control" value="">
+                        <input type="text" name="name" id="task-name" class="form-control" value={{$task_edit->name}}>
                     </div>
                 </div>
 
-                <!-- Add Task Button -->
+                <!-- Update Task Button -->
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-default">
-                            <i class="fa fa-btn fa-plus"></i>Add Task
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa-li fa fa-check-square"></i> Update Task
                         </button>
                     </div>
                 </div>
@@ -49,29 +49,29 @@
 
                         @foreach ($tasks as $task)
 
-                                  <tr>
+                            <tr>
                                <td class="table-text">
                                    <div>{{$task->name}}</div>
                                </td>
 
                                <!-- Task Delete Button --> 
                                <td>
-                               <form action="delete/{{$task->id}}" method="POST">
+                               <form action="{{url('delete/'.$task->id)}}" method="POST">
                                         @csrf
                                         @method('delete')
                                        <button type="submit" class="btn btn-danger">
                                             <i class="fa fa-btn fa-trash"></i>Delete
                                        </button>
                                  </form>
-                                 
-                               </td>
 
+                               </td>
+                               
                                <!-- Task Update Button -->
                                <td>
-                                <form action="edit/{{$task->id}}" method="POST">
+                                <form action="{{url('edit/'.$task->id)}}" method="POST">
                                          @csrf
                                         <button type="submit" class="btn btn-success">
-                                             <i class="fa-li fa fa-check-square"></i> Edit
+                                             <i class="fa-li fa fa-check-square"></i>Edit
                                         </button>
                                   </form>
                                   

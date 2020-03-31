@@ -1,9 +1,18 @@
 <?php
 
-Route::get('/', 'TaskController@index');
+use Illuminate\Support\Facades\Route;
 
-Route::get('task/{id}','Taskcontroller@show');
+
+
+
+Route::get('/','TaskController@index');
+
+Route::get('task/{id}','TaskController@show');
 
 Route::post('store','TaskController@store');
 
-Route::delete('delete/{id}','TaskController@destroy');
+Route::delete('delete/{id}','Taskcontroller@destroy');
+
+Route::post('edit/{id}','Taskcontroller@Update_Show');
+
+Route::post('update/{id}','TaskController@Update');
