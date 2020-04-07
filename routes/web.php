@@ -13,6 +13,6 @@ Route::post('store','TaskController@store');
 
 Route::delete('delete/{id}','Taskcontroller@destroy');
 
-Route::post('edit/{id}','Taskcontroller@edit');
+Route::put('edit/{id}','Taskcontroller@edit');
 
-Route::post('update/{id}','TaskController@Update');
+Route::patch('update/{id}','TaskController@Update');
