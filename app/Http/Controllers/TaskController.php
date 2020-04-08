@@ -55,21 +55,20 @@ class TaskController extends Controller
 
     public function edit ($id){
        
-       // $tasks =DB::table('tasks')->get(); 
-        $task=Task::where('id',$id) ->get();
-        $task_edit =DB::table('tasks')->find($id);
-       
-        return view('tasks.edit',compact('task_edit','tasks'));   
+        $edit = Task::find($id);
+        $tasks = Task::orderBy('created_at')->get();
+        return view('tasks.edit',compact('tasks','edit'));   
     }
 
     public function Update(Request $request,$id){ 
 
        
-        $task = Task::find($id);
+        $tasks = Task::find($id);
+        $tasks->name = $request->name;
+        $tasks->updated_at = now();
+        $tasks->save();
 
-        $task = Task::find($id);
-        $task->update(['name' => $request->get('name')]);
-        return redirect('tasks.welcome'. $id);
+        return redirect('/');
         
     }
 
